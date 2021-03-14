@@ -313,7 +313,7 @@
                 this.dialogFormVisible4Edit = true;
                 //通过id查询检查项
                 var id = row.id;
-                axios.get('/checkitem/findById.do?id=' + id).then(res=>{
+                axios.post('/checkitem/findById.do?id=' + id).then(res=>{
                     if(res.data.flag){
                         // 成功则绑定到formData
                         this.formData = res.data.data;

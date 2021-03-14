@@ -5,6 +5,7 @@ package com.service;
 import com.pojo.CheckItem;
 import health.entity.PageResult;
 import health.entity.QueryPageBean;
+import health.exception.HealthException;
 
 import java.util.List;
 
@@ -29,4 +30,21 @@ public interface CheckItemService {
      * @return
      */
     void add(CheckItem checkItem);
+    /**
+     * 根据id删除
+     * @return
+     */
+    void deleteById(int id) throws HealthException;
+
+    /**
+     * 根据id查询
+     * @return
+     */
+    CheckItem findById(int id);
+
+    /**
+     * 更新检查项
+     * @return
+     */
+    void update(CheckItem checkItem);
 }

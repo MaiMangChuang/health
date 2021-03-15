@@ -13,4 +13,12 @@
     <select id="findAll" resultType="com.pojo.CheckGroup">
         select * from  t_checkgroup
     </select>
+    <select id="findByCondition" parameterType="string" resultType="com.pojo.CheckGroup">
+        select * from t_checkgroup
+        <if test="value !=null and value.length > 0">
+        <where>
+             code  like  concat('%',#{queryString},'%') or name like concat('%',#{queryString},'%') or helpCode like concat('%',#{queryString},'%')
+        </where>
+        </if>
+    </select>
 </mapper>

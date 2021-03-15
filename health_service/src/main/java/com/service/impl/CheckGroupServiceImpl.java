@@ -2,9 +2,14 @@ package com.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.dao.CheckGroupDao;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.pojo.CheckGroup;
+import com.pojo.CheckItem;
 import com.service.CheckGroupService;
 import com.service.CheckItemService;
+import health.entity.PageResult;
+import health.entity.QueryPageBean;
 import health.utils.LoggerUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,5 +41,12 @@ public class CheckGroupServiceImpl implements CheckGroupService {
         LoggerUtils.getLogger(CheckGroupServiceImpl.class).debug("checkGroup = " + checkGroup.getId());
         Arrays.stream(checkitemIds).map(checkitemId->""+checkitemId).forEach(LoggerUtils.getLogger(CheckGroupServiceImpl.class)::debug);
         Arrays.stream(checkitemIds).forEach(checkitemId->checkGroupDao.addCheckGroupCheckItem(checkGroup.getId(),checkitemId));
+    }
+
+    @Override
+    public PageResult<CheckGroup> findPage(QueryPageBean queryPageBean) {
+        PageHelper.startPage(queryPageBean.getCurrentPage(),queryPageBean.getPageSize());
+        Page<CheckGroup> page = checkGroupDao.findByCondition(queryPageBean.getQueryString());
+        return new PageResult<CheckGroup>(page.getTotal(),page.getResult());
     }
 }

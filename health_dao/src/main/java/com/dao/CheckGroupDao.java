@@ -1,5 +1,6 @@
 package com.dao;
 
+import com.github.pagehelper.Page;
 import com.pojo.CheckGroup;
 import org.apache.ibatis.annotations.Param;
 
@@ -28,4 +29,10 @@ public interface CheckGroupDao {
      * @param checkGroup
      */
     void add(CheckGroup checkGroup);
+
+    /**
+     * 分页查询
+     * @param queryString 查询条件
+     */
+    Page<CheckGroup> findByCondition(String queryString);
 }

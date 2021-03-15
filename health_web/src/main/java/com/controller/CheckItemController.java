@@ -24,20 +24,20 @@ public class CheckItemController {
     @Reference
     private CheckItemService checkItemService;
 
-    @GetMapping("/findAll")
+    @RequestMapping("/findAll")
     public Result findAll(){
         // 调用服务
         List<CheckItem> list = checkItemService.findAll();
         return new Result(true, MessageConstant.QUERY_CHECKITEM_SUCCESS, list);
     }
 
-    @PostMapping("/findPage")
+    @RequestMapping("/findPage")
     public Result findPage(@RequestBody QueryPageBean queryPageBean){
         PageResult<CheckItem> page = checkItemService.findPage(queryPageBean);
         return new Result(true, MessageConstant.QUERY_CHECKITEM_SUCCESS, page);
     }
 
-    @PostMapping("/add")
+    @RequestMapping("/add")
     public Result add(@RequestBody CheckItem checkItem){
         checkItemService.add(checkItem);
         return new Result(true, MessageConstant.ADD_CHECKITEM_SUCCESS);
@@ -46,19 +46,19 @@ public class CheckItemController {
     /**
      * 通过id删除
      */
-    @PostMapping("/deleteById")
+    @RequestMapping("/deleteById")
     public Result deleteById(int id){
         // 调用服务删除
             checkItemService.deleteById(id);
             return new Result(true, MessageConstant.DELETE_CHECKITEM_SUCCESS);
     }
 
-    @PostMapping("/findById")
+    @RequestMapping("/findById")
     public Result findById(int id){
        CheckItem checkItem = checkItemService.findById(id);
         return new Result(true, MessageConstant.QUERY_CHECKITEM_SUCCESS,checkItem);
     }
-    @PostMapping("/update")
+    @RequestMapping("/update")
     public Result update(@RequestBody CheckItem checkItem){
         checkItemService.update(checkItem);
         return new Result(true, MessageConstant.EDIT_CHECKITEM_SUCCESS);

@@ -2,6 +2,8 @@ package com.service;
 
 import com.pojo.CheckGroup;
 import com.pojo.CheckItem;
+import health.entity.PageResult;
+import health.entity.QueryPageBean;
 
 import java.util.List;
 
@@ -24,4 +26,10 @@ public interface CheckGroupService {
      * @return
      */
     void add(CheckGroup checkGroup, Integer[] checkitemIds);
+
+    /**
+     * 分页查询
+     * @return
+     */
+    PageResult<CheckGroup> findPage(QueryPageBean queryPageBean);
 }

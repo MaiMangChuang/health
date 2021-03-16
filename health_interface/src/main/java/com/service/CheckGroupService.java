@@ -32,4 +32,12 @@ public interface CheckGroupService {
      * @return
      */
     PageResult<CheckGroup> findPage(QueryPageBean queryPageBean);
+
+    CheckGroup findById(int checkGroupId);
+
+    List<Integer> findCheckItemIdsByCheckGroupId(int checkGroupId);
+
+    void update(CheckGroup checkGroup, Integer[] checkitemIds);
+
+    void deleteById(int id);
 }

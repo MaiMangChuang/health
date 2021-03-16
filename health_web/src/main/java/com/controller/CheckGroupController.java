@@ -9,10 +9,9 @@ import health.entity.PageResult;
 import health.entity.QueryPageBean;
 import health.entity.Result;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Description: No Description
@@ -41,4 +40,42 @@ public class CheckGroupController {
         return new Result(true, MessageConstant.QUERY_CHECKGROUP_SUCCESS,pageResult);
     }
 
+    /**
+     * 通过id获取检查组
+     */
+    @RequestMapping("/findById")
+    public Result findById(int id){
+        CheckGroup  checkGroup = checkGroupService.findById(id);
+        return new Result(true, MessageConstant.QUERY_CHECKGROUP_SUCCESS,checkGroup);
+    }
+
+    /**
+     * 通过检查组id查询选中的检查项id
+     */
+    @RequestMapping("/findCheckItemIdsByCheckGroupId")
+    public Result findCheckItemIdsByCheckGroupId(int id){
+        List<Integer> checkItemIds = checkGroupService.findCheckItemIdsByCheckGroupId(id);
+        return new Result(true, MessageConstant.QUERY_CHECKITEM_SUCCESS,checkItemIds);
+    }
+
+    /**
+     * 修改提交
+     */
+    @RequestMapping("/update")
+    public Result update(@RequestBody CheckGroup checkGroup, Integer[] checkitemIds){
+        checkGroupService.update(checkGroup,checkitemIds);
+        return new Result(true, MessageConstant.EDIT_CHECKGROUP_SUCCESS);
+    }
+
+    /**
+     * 删除检查组
+     * @param id
+     * @return
+     */
+    @RequestMapping("/deleteById")
+    public Result deleteById(int id){
+        //调用业务服务删除
+        checkGroupService.deleteById(id);
+        return new Result(true, MessageConstant.DELETE_CHECKGROUP_SUCCESS);
+    }
 }

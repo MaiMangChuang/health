@@ -35,4 +35,24 @@ public interface CheckGroupDao {
      * @param queryString 查询条件
      */
     Page<CheckGroup> findByCondition(String queryString);
+
+    CheckGroup findById(int checkGroupId);
+
+    List<Integer> findCheckItemIdsByCheckGroupId(int checkGroupId);
+
+    void update(CheckGroup checkGroup);
+
+    void deleteCheckGroupCheckItem(Integer id);
+
+    /**
+     * 删除检查组
+     * @param id
+     */
+    void deleteById(int id);
+    /**
+     * 通过检查组id查询是否被套餐使用了
+     * @param id
+     * @return
+     */
+    int findSetmealCountByCheckGroupId(int id);
 }

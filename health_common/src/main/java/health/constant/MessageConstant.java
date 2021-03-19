@@ -17,6 +17,7 @@ public interface MessageConstant {
     static final String ADD_CHECKGROUP_SUCCESS = "新增检查组成功";
     static final String DELETE_CHECKGROUP_FAIL = "删除检查组失败";
     static final String DELETE_CHECKGROUP_SUCCESS = "删除检查组成功";
+    static final String DELETE_SETMEAL_SUCCESS = "删除套餐成功";
     static final String QUERY_CHECKGROUP_SUCCESS = "查询检查组成功";
     static final String QUERY_CHECKGROUP_FAIL = "查询检查组失败";
     static final String EDIT_CHECKGROUP_FAIL = "编辑检查组失败";
@@ -25,6 +26,7 @@ public interface MessageConstant {
     static final String PIC_UPLOAD_FAIL = "图片上传失败";
     static final String ADD_SETMEAL_FAIL = "新增套餐失败";
     static final String ADD_SETMEAL_SUCCESS = "新增套餐成功";
+    static final String EDIT_SETMEAL_SUCCESS = "编辑套餐成功";
     static final String IMPORT_ORDERSETTING_FAIL = "批量导入预约设置数据失败";
     static final String IMPORT_ORDERSETTING_SUCCESS = "批量导入预约设置数据成功";
     static final String GET_ORDERSETTING_SUCCESS = "获取预约设置数据成功";
@@ -64,5 +66,5 @@ public interface MessageConstant {
     static final String GET_BUSINESS_REPORT_FAIL = "获取运营统计数据失败";
     static final String GET_SETMEAL_LIST_SUCCESS = "查询套餐列表数据成功";
     static final String GET_SETMEAL_LIST_FAIL = "查询套餐列表数据失败";
-    static final String CHECKGROUP_IN_USE = "存在使用该检查组的用户，无法进行删除";
+    static final String CHECKGROUP_IN_USE = "该套餐被使用，无法删除";
 }

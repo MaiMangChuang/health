@@ -33,7 +33,7 @@ public class CheckGroupServiceImpl implements CheckGroupService {
     CheckGroupDao checkGroupDao;
     @Override
     public List<CheckGroup> findAll() {
-        return null;
+        return checkGroupDao.findAll();
     }
 
     @Override

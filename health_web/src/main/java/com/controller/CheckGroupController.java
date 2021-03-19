@@ -24,6 +24,12 @@ public class CheckGroupController {
     @Reference
     private CheckGroupService checkGroupService;
 
+    @RequestMapping("/findAll")
+    public Result findAll(){
+      List<CheckGroup>  all = checkGroupService.findAll();
+        return new Result(true, MessageConstant.QUERY_CHECKGROUP_SUCCESS,all);
+    }
+
     /**
      * 新增
      */

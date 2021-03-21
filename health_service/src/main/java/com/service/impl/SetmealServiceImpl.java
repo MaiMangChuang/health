@@ -84,4 +84,9 @@ public class SetmealServiceImpl implements SetmealService {
             }
         }
     }
+
+    @Override
+    public List<String> findImgs() {
+        return setmealDao.findImgs();
+    }
 }

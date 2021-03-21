@@ -73,4 +73,10 @@ public interface SetmealDao {
      * @param setmeal
      */
     void update(Setmeal setmeal);
+
+    /**
+     * 查出所有套餐图片名字
+     * @return
+     */
+    List<String> findImgs();
 }

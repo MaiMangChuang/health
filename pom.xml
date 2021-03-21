@@ -15,7 +15,10 @@
         <module>health_interface</module>
         <module>health_service</module>
         <module>health_web</module>
+        <module>health_jobs</module>
     </modules>
+
+
 
     <!-- 集中定义依赖版本号 -->
     <properties>
@@ -260,6 +263,7 @@
             </plugin>
         </plugins>
     </build>
+
 
 
 </project>

@@ -20,7 +20,7 @@
     </bean>
     <!--  触发器  -->
     <bean id="trigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-        <property name="cronExpression" value="0/30 * * * * ?"/>
+        <property name="cronExpression" value="0 0/10 * * * ?"/>
         <property name="jobDetail" ref="jobDetail"/>
     </bean>
     <!--  调度容器  -->

@@ -27,7 +27,7 @@ public class CleanImgJob {
     /**
      * 清理垃圾图片的执行方法
      */
-    public void clearImg() {
+    public void cleanImg() {
         log.info("定时任务开始执行  " + System.currentTimeMillis());
         // 查出7牛上的所有图片
         List<String> imgIn7Niu = QiNiuUtils.listFile();

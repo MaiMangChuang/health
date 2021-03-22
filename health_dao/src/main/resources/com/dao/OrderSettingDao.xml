@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.OrderSettingDao">
+    <insert id="add">  insert into t_ordersetting (orderDate, number, reservations)
+        values (#{orderDate},#{number},#{reservations})</insert>
+    <update id="updateNumber"> update t_ordersetting set number=#{number} where orderDate=#{orderDate}</update>
+    <select id="findByOrderDate" resultType="com.pojo.OrderSetting">  select * from t_ordersetting where orderDate=#{orderDate}</select>
+    <select id="getOrderSettingByMonth" resultType="java.util.Map" parameterType="java.util.Map">
+     select cast(DATE_FORMAT(ORDERDATE,'%d') as SIGNED) date,
+            number,reservations
+        from t_ordersetting
+        where orderDate &gt; #{startDate} and orderDate &lt;  #{endDate}
+    </select>
+</mapper>

@@ -37,4 +37,6 @@ public interface OrderSettingDao {
      * @return
      */
     List<Map<String, Integer>> getOrderSettingByMonth(Map<String,String> map);
+
+
 }

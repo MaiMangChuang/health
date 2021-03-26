@@ -105,7 +105,6 @@
                                                 </template>
                                                 <button v-if="dayobject.day > today" @click="handleOrderSet(dayobject.day)" class="orderbtn">设置</button>
                                             </template>
-											
                                         </div>
                                     </template>
                                 </li>
@@ -131,7 +130,7 @@
                 LocalMonth: 1,
                 currentYear: 1970,
                 currentWeek: 1,
-                days: [],
+                days: [],// 日历的单元格
                 leftobj: []//用于装载页面显示的月份已经进行预约设置的数据
             },
             created: function () {//在vue初始化时调用
@@ -164,6 +163,34 @@
                 },
 				//预约设置
                 handleOrderSet(day){
+                    //alert(typeof(day));
+                    var dateStr = this.formatDate(day.getFullYear(), day.getMonth() + 1, day.getDate());
+
+                    this.$prompt('请输入最大可预约数', '提示', {
+                        confirmButtonText: '确定',
+                        cancelButtonText: '取消',
+                        inputPattern: /^[1-9]\d*$/,
+                        inputErrorMessage: '只能输入数字'
+                    }).then(({ value }) => {
+                        //value即为输入的值
+                        // 提交 请求
+                        var params={orderDate:dateStr, number: value};
+                        axios.post('/ordersetting/editNumberByDate.do', params).then(res => {
+                            this.$message({
+                                message: res.data.message,
+                                type: res.data.flag?"success":"error"
+                            });
+                            if(res.data.flag){
+                                // 成功 刷新日历
+                                this.getDataByMonth();
+                            }
+                        })
+                    }).catch(() => {
+                        this.$message({
+                            type: 'info',
+                            message: '取消输入'
+                        });
+                    });
                 },
 				//上传之前进行文件格式校验
                 beforeUpload(file){

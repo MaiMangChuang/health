@@ -25,4 +25,10 @@ public interface OrderSettingService {
      * @return
      */
     List<Map<String, Integer>> getOrderSettingByMonth(String month);
+
+    /**
+     * 修改套餐最大可预约人数
+     * @param orderSetting
+     */
+    void editNumberByDate(OrderSetting orderSetting) throws HealthException;
 }

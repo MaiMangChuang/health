@@ -8,6 +8,7 @@ import health.entity.Result;
 import health.utils.POIUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -66,5 +67,10 @@ public class OrderSettingController {
         return new Result(false, MessageConstant.IMPORT_ORDERSETTING_FAIL);
     }
 
+    @RequestMapping("/editNumberByDate")
+    public Result editNumberByDate(@RequestBody OrderSetting orderSetting) {
+        orderSettingService.editNumberByDate(orderSetting);
+        return new Result(true, MessageConstant.ORDERSETTING_SUCCESS);
+    }
 
 }

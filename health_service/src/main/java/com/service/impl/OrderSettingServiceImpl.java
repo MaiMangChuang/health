@@ -51,4 +51,14 @@ public class OrderSettingServiceImpl implements OrderSettingService {
         map.put("endDate", endDate);
         return orderSettingDao.getOrderSettingByMonth(map);
     }
+
+    @Override
+    public void editNumberByDate(OrderSetting orderSetting) throws HealthException{
+        OrderSetting orderSettingDB = orderSettingDao.findByOrderDate(orderSetting.getOrderDate());
+        if (orderSetting.getNumber() < orderSettingDB.getReservations()) {
+            //若可预约数小于已预约数，则抛出异常，不允许更改
+            throw new HealthException(orderSetting.getOrderDate() + "中：可预约数不能小于已预约数");
+        }
+        orderSettingDao.updateNumber(orderSetting);
+    }
 }

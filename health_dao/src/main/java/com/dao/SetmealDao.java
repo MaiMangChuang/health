@@ -79,4 +79,16 @@ public interface SetmealDao {
      * @return
      */
     List<String> findImgs();
+
+    /**
+     * 查询所有套餐
+     * @return
+     */
+    List<Setmeal> findAll();
+
+    /**
+     *  根据id查询出详情
+     * @return
+     */
+    Setmeal findDetailById(int id);
 }

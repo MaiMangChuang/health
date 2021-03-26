@@ -51,5 +51,41 @@
     <select id="findImgs" resultType="java.lang.String">
              select img from t_setmeal
     </select>
+    <select id="findAll" resultType="com.pojo.Setmeal">
+            select * from t_setmeal
+    </select>
+
+    <resultMap id="setmealMap" type="com.pojo.Setmeal">
+        <id property="id" column="id" ></id>
+        <result property="name" column="name"/>
+        <result property="code" column="code"/>
+        <result property="helpCode" column="helpCode"/>
+        <result property="sex" column="sex"/>
+        <result property="age" column="age"/>
+        <result property="price" column="price"/>
+        <result property="remark" column="remark"/>
+        <result property="attention" column="attention"/>
+        <result property="img" column="img"/>
+        <collection property="checkGroups" ofType="com.pojo.CheckGroup">
+            <id  property="id" column="checkgroup_id"></id>
+            <result property="name" column="checkgroup_name"/>
+            <result property="remark" column="checkgroup_remark"/>
+            <collection property="checkItems" ofType="com.pojo.CheckItem">
+                <id  property="id" column="checkitem_id"></id>
+                <result property="name" column="checkitem_name"/>
+            </collection>
+        </collection>
+    </resultMap>
+
+    <select id="findDetailById" resultMap="setmealMap" parameterType="int">
+  select s.*,
+             sc.checkgroup_id, g.name checkgroup_name, g.remark checkgroup_remark,
+             cc.checkitem_id, c.name checkitem_name
+        from t_setmeal s, t_setmeal_checkgroup sc, t_checkgroup g,
+             t_checkgroup_checkitem cc, t_checkitem c
+        where s.id=sc.setmeal_id and sc.checkgroup_id=g.id
+              and g.id=cc.checkgroup_id and cc.checkitem_id=c.id
+              and s.id=#{id}
+    </select>
 
 </mapper>

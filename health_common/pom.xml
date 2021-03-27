@@ -143,7 +143,15 @@
             <artifactId>spring-security-taglibs</artifactId>
         </dependency>
 
-
+        <!--阿里云服务器短信平台-->
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>xml-apis</groupId>

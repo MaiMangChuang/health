@@ -4,6 +4,11 @@
     <insert id="add">  insert into t_ordersetting (orderDate, number, reservations)
         values (#{orderDate},#{number},#{reservations})</insert>
     <update id="updateNumber"> update t_ordersetting set number=#{number} where orderDate=#{orderDate}</update>
+    <update id="editReservationsByOrderDate">
+        update t_ordersetting set reservations = reservations+1
+        where orderDate = #{orderDate}
+        and number > reservations
+    </update>
     <select id="findByOrderDate" resultType="com.pojo.OrderSetting">  select * from t_ordersetting where orderDate=#{orderDate}</select>
     <select id="getOrderSettingByMonth" resultType="java.util.Map" parameterType="java.util.Map">
      select cast(DATE_FORMAT(ORDERDATE,'%d') as SIGNED) date,

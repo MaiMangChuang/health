@@ -38,5 +38,9 @@ public interface OrderSettingDao {
      */
     List<Map<String, Integer>> getOrderSettingByMonth(Map<String,String> map);
 
-
+    /**
+     * 对应预约数量加一
+     * @param orderSetting
+     */
+    void editReservationsByOrderDate(OrderSetting orderSetting);
 }

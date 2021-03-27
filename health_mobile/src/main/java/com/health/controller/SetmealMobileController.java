@@ -54,4 +54,14 @@ public class SetmealMobileController {
     }
 
 
+    /**
+     * 套餐详情
+     */
+    @RequestMapping("/findById")
+    public Result findById(int id){
+        Setmeal setmeal = setmealService.findById(id);
+        setmeal.setImg(QiNiuUtils.DOMAIN + setmeal.getImg());
+        return new Result(true, MessageConstant.QUERY_SETMEALLIST_SUCCESS,setmeal);
+    }
+
 }

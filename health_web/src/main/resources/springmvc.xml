@@ -9,6 +9,7 @@
                   http://www.springframework.org/schema/mvc/spring-mvc.xsd
                   http://code.alibabatech.com/schema/dubbo
                   http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="true">
             <!--不需要视图解析器，项目中的所有的请求都返回json数据结构-->
@@ -39,6 +40,7 @@
         2.6.2 则mvc要扫一次controller
     -->
     <dubbo:annotation package="com.controller" />
+    <dubbo:annotation package="com.security" />
     <!--
         超时全局设置 10分钟
         check=false 不检查服务提供方，开发阶段建议设置为false
@@ -52,4 +54,5 @@
         <property name="maxInMemorySize" value="8000" />
         <property name="defaultEncoding" value="UTF-8"/>
     </bean>
+    <import resource="classpath:spring-security.xml"/>
 </beans>

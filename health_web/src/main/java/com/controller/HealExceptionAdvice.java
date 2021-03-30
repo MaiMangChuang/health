@@ -6,6 +6,7 @@ import health.exception.HealthException;
 import health.utils.LoggerUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -42,5 +43,9 @@ public class HealExceptionAdvice {
     public Result handleException(Exception e){
         log.error("发生异常",e);
         return new Result(false, "操作异常，请联系管理员");
+    }
+    @ExceptionHandler(AccessDeniedException.class)
+    public Result handleAccessDeniedException(AccessDeniedException e){
+        return new Result(false, "权限不足");
     }
 }

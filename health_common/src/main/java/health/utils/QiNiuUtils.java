@@ -22,8 +22,8 @@ import java.util.List;
  */
 public class QiNiuUtils {
 
-    private static final String ACCESSKEY = "TItgxpu2insa7rw0Y3zmXdGzzjejyyBRKiVLugBP";
-    private static final String SECRETKEY = "tlBv3SFbRBi_hDgoT9VEoJRGlYwXQarS2L3m7Gy8";
+    private static final String ACCESSKEY = "xxxxx";
+    private static final String SECRETKEY = "xxxxx";
     private static final String BUCKET = "heath18";
     public static final String DOMAIN= "http://qq5pk8jvy.hn-bkt.clouddn.com/";
 
